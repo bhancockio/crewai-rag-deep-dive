@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- Tools ---
+# PDF SOURCE: https://www.gpinspect.com/wp-content/uploads/2021/03/sample-home-report-inspection.pdf
 pdf_search_tool = PDFSearchTool(
     pdf="./example_home_inspection.pdf",
 )
