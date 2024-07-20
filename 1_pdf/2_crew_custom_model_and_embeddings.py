@@ -20,22 +20,10 @@ pdf_search_tool = PDFSearchTool(
 )
 
 # --- Agents ---
-manager_agent = Agent(
-    role="Manager",
-    goal="Receive customer questions and delegate them to the research agent",
-    verbose=True,
-    backstory=(
-        """
-        The manager agent is skilled in coordinating tasks 
-        and ensuring efficient workflow within the team.
-        """
-    ),
-    tools=[],
-)
-
 research_agent = Agent(
     role="Research Agent",
     goal="Search through the PDF to find relevant answers",
+    allow_delegation=False,
     verbose=True,
     backstory=(
         """
@@ -49,6 +37,7 @@ research_agent = Agent(
 professional_writer_agent = Agent(
     role="Professional Writer",
     goal="Write professional emails based on the research agent's findings",
+    allow_delegation=False,
     verbose=True,
     backstory=(
         """
@@ -78,7 +67,7 @@ answer_customer_question_task = Task(
         the content of the home inspection PDF.
         """,
     tools=[pdf_search_tool],
-    agent=manager_agent,
+    agent=research_agent,
 )
 
 write_email_task = Task(
@@ -107,7 +96,7 @@ write_email_task = Task(
 # --- Crew ---
 crew = Crew(
     tasks=[answer_customer_question_task, write_email_task],
-    agents=[manager_agent, research_agent, professional_writer_agent],
+    agents=[research_agent, professional_writer_agent],
     process=Process.sequential,
 )
 

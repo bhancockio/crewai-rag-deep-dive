@@ -61,9 +61,11 @@ scrape_agent = Agent(
     allow_delegation=False,
     backstory=(
         """
-        A dedicated professional focused on extracting and processing content from YouTube videos.
-        You ensure that all video content is accurately scraped and added to the vector database.
-        You are thorough and fact-driven, ensuring the highest quality of data.
+        - A dedicated professional focused on extracting and processing content
+            from YouTube videos.
+        - You ensure that all video content is accurately scraped and added to 
+            the vector database.
+        - You are thorough and fact-driven, ensuring the highest quality of data.
         """
     ),
     tools=[fetch_latest_videos_tool],
@@ -149,9 +151,9 @@ scrape_youtube_channel_task = Task(
         Ensure that all information comes directly from the YouTube channel and videos. 
         Do not make up any information.
 
-        Here is the YouTube channel URL:
+        Here is the YouTube channel handle:
 
-        {youtube_channel_url}
+        {youtube_channel_handle}
         """
     ),
     expected_output="""
@@ -165,7 +167,7 @@ scrape_youtube_channel_task = Task(
 process_videos_task = Task(
     description=(
         """
-        Process the extracted video urls from the previos task 
+        Process the extracted video urls from the previous task 
         and add them to the vector database.
         Ensure that each video is properly added to the vector database.
         All information must come directly from the searches. 
@@ -255,7 +257,11 @@ fallback_task = Task(
     description=(
         """
         Perform a final check and use web scraping to 
-        find any remaining missing information on {youtube_channel_url}.
+        find any remaining missing information on the 
+        youtube channel with the following handle: 
+        
+        {youtube_channel_handle}
+        
         Ensure the `ContentCreatorInfo` model is fully populated.
         All information must come directly from the searches. 
         Do not make up any information.
@@ -289,6 +295,12 @@ crew = Crew(
     process=Process.sequential,
 )
 
-youtube_channel_url = input("Please enter the YouTube channel URL to analyze:\n")
-result = crew.kickoff(inputs={"youtube_channel_url": youtube_channel_url})
+youtube_channel_handle = input("Please enter the YouTube handle to analyze:\n")
+result = crew.kickoff(inputs={"youtube_channel_handle": youtube_channel_handle})
 print(result)
+
+# REPLAY EXAMPLE
+# result = crew.replay_from_task(
+#     "4a1e646f-3450-4300-b735-83ed448fea20",
+# )
+# print(result)
