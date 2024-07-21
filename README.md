@@ -66,7 +66,7 @@ crewai-rag-deep-dive/
    Ensure you have [Poetry](https://python-poetry.org/docs/#installation) installed.
 
    ```bash
-   poetry install
+   poetry install --no-root
    ```
 
 3. **Set up environment variables**:
