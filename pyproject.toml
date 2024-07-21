@@ -7,12 +7,12 @@ authors = ["bhancockio <brandon@brandonhancock.io>"]
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
 python-dotenv = "1.0.0"
-crewai-tools = "^0.4.7"
+crewai-tools = "^0.4.26"
 firecrawl-py = "^0.0.20"
 embedchain = {extras = ["youtube"], version = "^0.1.116"}
 langchain-anthropic = "^0.1.20"
 ollama = "^0.2.1"
-crewai = {path="/Users/brandonhancock/Code/crewai/crewAI"}
+crewai = "^0.41.1"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
