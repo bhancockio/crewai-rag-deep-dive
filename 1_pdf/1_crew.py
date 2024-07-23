@@ -23,6 +23,7 @@ research_agent = Agent(
         """
     ),
     tools=[pdf_search_tool],
+
 )
 
 professional_writer_agent = Agent(
@@ -94,5 +95,5 @@ crew = Crew(
 customer_question = input(
     "Which section of the report would you like to generate a work order for?\n"
 )
-result = crew.kickoff_for_each(inputs=[{"customer_question": "Roof"}])
+result = crew.kickoff(inputs={"customer_question": customer_question})
 print(result)
