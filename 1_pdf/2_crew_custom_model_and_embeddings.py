@@ -12,10 +12,10 @@ Learn more about custom configurations here:
 
 # --- Tools ---
 pdf_search_tool = PDFSearchTool(
-    pdf="./example_home_inspection.pdf",
+    pdf="1_pdf/1.pdf",
     config=dict(
-        llm=dict(provider="anthropic", config=dict(model="claude-3-haiku")),
-        embedder=dict(provider="ollama", config=dict(model="all-minilm")),
+        llm=dict(provider="openai", config=dict(model="gpt-3.5-turbo")),
+        embedder=dict(provider="ollama", config=dict(model="nomic-embed-text:latest")),
     ),
 )
 

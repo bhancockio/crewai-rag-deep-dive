@@ -7,7 +7,7 @@ load_dotenv()
 # --- Tools ---
 # PDF SOURCE: https://www.gpinspect.com/wp-content/uploads/2021/03/sample-home-report-inspection.pdf
 pdf_search_tool = PDFSearchTool(
-    pdf="./example_home_inspection.pdf",
+    pdf="1_pdf/1.pdf",
 )
 
 # --- Agents ---
@@ -16,6 +16,8 @@ research_agent = Agent(
     goal="Search through the PDF to find relevant answers",
     allow_delegation=False,
     verbose=True,
+    max_rpm=None,
+    max_iter = 25,
     backstory=(
         """
         The research agent is adept at searching and 
@@ -31,6 +33,8 @@ professional_writer_agent = Agent(
     goal="Write professional emails based on the research agent's findings",
     allow_delegation=False,
     verbose=True,
+    max_rpm=None,
+    max_iter = 25,
     backstory=(
         """
         The professional writer agent has excellent writing skills and is able to craft 

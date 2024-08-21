@@ -13,7 +13,7 @@ class FetchLatestVideosFromYouTubeChannelInput(BaseModel):
     youtube_channel_handle: str = Field(
         ..., description="The YouTube channel handle (e.g., '@channelhandle')."
     )
-    max_results: int = Field(10, description="The maximum number of results to return.")
+    max_results: int = Field(5, description="The maximum number of results to return.")
 
 
 class VideoInfo(BaseModel):
@@ -38,7 +38,7 @@ class FetchLatestVideosFromYouTubeChannelTool(BaseTool):
     def _run(
         self,
         youtube_channel_handle: str,
-        max_results: int = 10,
+        max_results: int = 5,
     ) -> FetchLatestVideosFromYouTubeChannelOutput:
         api_key = os.getenv("YOUTUBE_API_KEY")
 
