@@ -69,7 +69,7 @@ scrape_agent = Agent(
         """
     ),
     tools=[fetch_latest_videos_tool],
-    llm=ChatOpenAI(model="gpt-4o"),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-0125"),
 )
 
 vector_db_agent = Agent(
@@ -84,7 +84,7 @@ vector_db_agent = Agent(
         """
     ),
     tools=[add_video_to_vector_db_tool],
-    llm=ChatOpenAI(model="gpt-4o"),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-0125"),
 )
 
 general_research_agent = Agent(
@@ -104,7 +104,7 @@ general_research_agent = Agent(
         """
     ),
     tools=[rag_tool],
-    llm=ChatOpenAI(model="gpt-4o"),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-0125"),
 )
 
 follow_up_agent = Agent(
@@ -123,7 +123,7 @@ follow_up_agent = Agent(
         """
     ),
     tools=[rag_tool],
-    llm=ChatOpenAI(model="gpt-4o"),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-0125"),
 )
 
 fallback_agent = Agent(
@@ -139,7 +139,7 @@ fallback_agent = Agent(
         """
     ),
     tools=[fire_crawl_search_tool],
-    llm=ChatOpenAI(model="gpt-4o"),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-0125"),
 )
 
 # --- Tasks ---
